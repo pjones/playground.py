@@ -1,0 +1,8 @@
+# Get all users:
+GET http://127.0.0.1:5000/users
+
+# Get the user with database ID 1:
+GET http://127.0.0.1:5000/users/1
+
+# Fetching a user with a bad ID should return a 404:
+GET http://127.0.0.1:5000/users/1abc

@@ -21,8 +21,12 @@ class User(Base):
         """
         self.name = name
 
-    @classmethod
-    def find_by_name_and_address(_cls, db: Session, name: str, address_label: str):
+    @staticmethod
+    def find_by_id(db: Session, user_id: int):
+        return db.query(User).filter(User.id == user_id)
+
+    @staticmethod
+    def find_by_name_and_address(db: Session, name: str, address_label: str):
         """
         Find a user that has the given name.
 
