@@ -12,7 +12,7 @@ class User(Base):
     __tablename__ = "users"
 
     id: int = Column(Integer, primary_key=True)
-    name: str = Column(Text, unique=True)
+    name: str = Column(Text, unique=True, nullable=False)
     addresses: List[Address] = relationship("Address")
 
     def __init__(self, name):

@@ -9,9 +9,9 @@ class Address(Base):
     __tablename__ = "addresses"
 
     id: int = Column(Integer, primary_key=True)
-    user_id: int = Column(Integer, ForeignKey("users.id"))
-    label: str = Column(Text)
-    display_text: str = Column(Text)
+    user_id: int = Column(Integer, ForeignKey("users.id"), nullable=False)
+    label: str = Column(Text, nullable=False)
+    display_text: str = Column(Text, nullable=False)
 
     def __init__(self, label, display_text):
         self.label = label
