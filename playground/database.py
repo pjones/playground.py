@@ -17,18 +17,3 @@ def init_db():
     import playground.models.address
 
     Base.metadata.create_all(bind=engine)
-
-
-# Find a user with the given user_name, and with an address with the
-# given label.
-def find_user_with_address(db, user_name, address_label):
-    from playground.models.user import User
-    from playground.models.address import Address
-
-    return (
-        db.query(User)
-        .filter(User.name == user_name)
-        .join(Address)
-        .filter(Address.label == address_label)
-        .first()
-    )

@@ -1,4 +1,4 @@
-from playground.database import db_session, init_db, find_user_with_address
+from playground.database import db_session, init_db
 from playground.fake_data import maybe_create_fake_data
 from flask import jsonify, Flask
 
@@ -15,7 +15,9 @@ def users():
 
 @app.route("/mando")
 def mando():
-    mando = find_user_with_address(db_session, "The Mandalorian", "Home")
+    from playground.models.user import User
+
+    mando = User.find_by_name_and_address(db_session, "The Mandalorian", "Home")
     return jsonify(mando)
 
 
