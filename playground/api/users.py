@@ -13,7 +13,7 @@ def all_users():
 
 @users_api.route("/users/<user_id>")
 def user_by_id(user_id):
-    user = User.find_by_id(db_session, user_id).first()
+    user = User.find_by_id(db_session, user_id)
 
     if user is None:
         abort(404)

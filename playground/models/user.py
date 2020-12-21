@@ -37,7 +37,7 @@ class User(Base):
         """
         Find a specific user given their database ID.
         """
-        return db.query(User).filter(User.id == user_id)
+        return db.query(User).filter(User.id == user_id).first()
 
     @staticmethod
     def find_by_name_and_address(db: Session, name: str, address_label: str):
