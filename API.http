@@ -6,3 +6,6 @@ GET http://127.0.0.1:5000/users/1
 
 # Fetching a user with a bad ID should return a 404:
 GET http://127.0.0.1:5000/users/1abc
+
+# Fetch an address for a user given a user ID and address label:
+GET http://127.0.0.1:5000/users/1/addresses/Home
