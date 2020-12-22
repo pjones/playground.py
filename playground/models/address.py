@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from playground.database import Base
 from sqlalchemy import Column, DateTime, Integer, Text, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, validates
 from sqlalchemy.orm.session import Session
 from sqlalchemy.sql import func
 
@@ -30,6 +30,14 @@ class Address(Base):
     def __init__(self, label, display_text):
         self.label = label
         self.display_text = display_text
+
+    @validates("label")
+    def validate_label(self, _key, label):
+        """
+        Validate that an address label is in the list of allowed values.
+        """
+        assert label in ["Home", "Work"]
+        return label
 
     @staticmethod
     def find_by_user_id_and_label(db: Session, user_id: int, label: str):
